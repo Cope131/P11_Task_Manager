@@ -62,7 +62,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_TASK_NAME, task.getName());
-        values.put(COLUMN_TASK_DESCRIPTION, task.getDescription());
+        values.put(COLUMN_TASK_DESCRIPTION, task.getDesc());
         long result = db.insert(TABLE_TASK, null, values);
         Log.d(DEBUG_TAG, "Insert Task Record Result: " + result) ;
     }
@@ -70,7 +70,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void insertTask(SQLiteDatabase db, Task task) {
         ContentValues values = new ContentValues();
         values.put(COLUMN_TASK_NAME, task.getName());
-        values.put(COLUMN_TASK_DESCRIPTION, task.getDescription());
+        values.put(COLUMN_TASK_DESCRIPTION, task.getDesc());
         long result = db.insert(TABLE_TASK, null, values);
         Log.d(DEBUG_TAG, "Insert Task Record Result: " + result) ;
     }
