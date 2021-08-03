@@ -43,7 +43,7 @@ public class AddActivity extends AppCompatActivity {
                         Calendar cal = Calendar.getInstance();
                         cal.add(Calendar.SECOND, 5);
 
-                        Intent intent = new Intent(AddActivity.this, ScheduledNotificationReceiver.class);
+                        Intent intent = new Intent(AddActivity.this, NotificationReceiver.class);
                         intent.putExtra("name", nameInput);
                         intent.putExtra("description", descriptionInput);
 
