@@ -1,12 +1,18 @@
 package com.myapplicationdev.android.p11_task_manager;
 
-public class Task {
+import androidx.annotation.NonNull;
+
+import java.io.Serializable;
+
+public class Task implements Serializable {
     private int id;
-    private String name, description;
-    public Task(int id, String name, String description) {
+    private String name;
+    private String desc;
+
+    public Task(int id, String name, String desc) {
         this.id = id;
         this.name = name;
-        this.description = description;
+        this.desc = desc;
     }
 
     public Task(String name, String description){
@@ -18,16 +24,29 @@ public class Task {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
 
-    public String getDescription() {
-        return description;
+    public void setName(String name) {
+        this.name = name;
     }
 
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    @NonNull
     @Override
     public String toString() {
-        return String.format("%d %s \n%s", id, name, description);
+        return id + "" + name + "\n" + desc;
     }
 }
