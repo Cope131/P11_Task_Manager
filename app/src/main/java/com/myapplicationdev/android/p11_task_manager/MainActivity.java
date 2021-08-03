@@ -1,8 +1,10 @@
 package com.myapplicationdev.android.p11_task_manager;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -49,5 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         // TODO: go to add activity
+        Intent intentAdd = new Intent(MainActivity.this, AddActivity.class);
+        startActivity(intentAdd);
     }
 }
