@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -31,7 +32,7 @@ public class AddActivity extends AppCompatActivity {
                 if (!etDescription.getText().toString().equals("") && !etName.getText().toString().equals("")) {
                     String nameInput = etName.getText().toString();
                     String descriptionInput = etDescription.getText().toString();
-                    Integer remind = Integer.parseInt(etTime.getText().toString());
+                    int remind = Integer.parseInt(etTime.getText().toString());
 
                     try {
                         DBHelper dbh = new DBHelper(AddActivity.this);
@@ -55,20 +56,23 @@ public class AddActivity extends AppCompatActivity {
                         am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
 
                         finish();
+                        return;
                     } catch (NumberFormatException e) {
                         e.printStackTrace();
                     }
                 }
-                Intent intentBack = new Intent(AddActivity.this, MainActivity.class);
-                startActivity(intentBack);
+//                Intent intentBack = new Intent(AddActivity.this, MainActivity.class);
+//                startActivity(intentBack);
+                Toast.makeText(AddActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
             }
         });
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentBack = new Intent(AddActivity.this, MainActivity.class);
-                startActivity(intentBack);
+//                Intent intentBack = new Intent(AddActivity.this, MainActivity.class);
+//                startActivity(intentBack);
+                finish();
             }
         });
     }
