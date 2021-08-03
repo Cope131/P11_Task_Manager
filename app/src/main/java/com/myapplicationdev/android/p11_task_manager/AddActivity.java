@@ -55,7 +55,6 @@ public class AddActivity extends AppCompatActivity {
                         am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
 
                         finish();
-
                     } catch (NumberFormatException e) {
                         e.printStackTrace();
                     }

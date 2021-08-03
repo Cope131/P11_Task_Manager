@@ -47,6 +47,6 @@ public class Task implements Serializable {
     @NonNull
     @Override
     public String toString() {
-        return id + "" + name + "\n" + desc;
+        return id + " " + name + "\n" + desc;
     }
 }
