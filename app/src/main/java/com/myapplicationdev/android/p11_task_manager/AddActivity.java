@@ -55,7 +55,7 @@ public class AddActivity extends AppCompatActivity {
                         AlarmManager am = (AlarmManager) getSystemService(AddActivity.ALARM_SERVICE);
                         am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
 
-                        finish();
+                        back();
                         return;
                     } catch (NumberFormatException e) {
                         e.printStackTrace();
@@ -72,8 +72,13 @@ public class AddActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                Intent intentBack = new Intent(AddActivity.this, MainActivity.class);
 //                startActivity(intentBack);
-                finish();
+                back();
             }
         });
+    }
+
+    private void back() {
+        setResult(RESULT_OK);
+        finish();
     }
 }

@@ -1,6 +1,7 @@
 package com.myapplicationdev.android.p11_task_manager;
 
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
@@ -15,6 +16,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+
+    private final int REQUEST_CODE = 201;
 
     // List View Components
     private ListView tasksListView;
@@ -52,6 +55,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         // TODO: go to add activity
         Intent intentAdd = new Intent(MainActivity.this, AddActivity.class);
-        startActivity(intentAdd);
+        startActivityForResult(intentAdd, REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+            loadTasks();
+        }
     }
 }
