@@ -13,7 +13,7 @@ import android.widget.EditText;
 import java.util.Calendar;
 
 public class AddActivity extends AppCompatActivity {
-    EditText etName, etDescription;
+    EditText etName, etDescription, etTime;
     Button btnAdd, btnCancel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,7 @@ public class AddActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add);
         etName = findViewById(R.id.etName);
         etDescription = findViewById(R.id.etDescription);
+        etTime = findViewById(R.id.etTime);
         btnAdd = findViewById(R.id.btnAddTask);
         btnCancel = findViewById(R.id.btnCancel);
 
@@ -30,6 +31,7 @@ public class AddActivity extends AppCompatActivity {
                 if (!etDescription.getText().toString().equals("") && !etName.getText().toString().equals("")) {
                     String nameInput = etName.getText().toString();
                     String descriptionInput = etDescription.getText().toString();
+                    Integer remind = Integer.parseInt(etTime.getText().toString());
 
                     try {
                         DBHelper dbh = new DBHelper(AddActivity.this);
@@ -41,7 +43,7 @@ public class AddActivity extends AppCompatActivity {
                         int requestCode = 123;
 
                         Calendar cal = Calendar.getInstance();
-                        cal.add(Calendar.SECOND, 5);
+                        cal.add(Calendar.SECOND, remind);
 
                         Intent intent = new Intent(AddActivity.this, NotificationReceiver.class);
                         intent.putExtra("name", nameInput);
