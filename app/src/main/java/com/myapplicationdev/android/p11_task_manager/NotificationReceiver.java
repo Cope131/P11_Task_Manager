@@ -18,6 +18,9 @@ public class NotificationReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        String name = intent.getExtras().getString("name");
+        String description = intent.getExtras().getString("description");
+
         NotificationManager notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
@@ -32,8 +35,8 @@ public class NotificationReceiver extends BroadcastReceiver {
 
         //build notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "default");
-        builder.setContentTitle("Task Manager Reminder!");
-        builder.setContentText("Post Letters");
+        builder.setContentTitle("Task Manager Reminder");
+        builder.setContentText(name + "\n" + description);
         builder.setSmallIcon(android.R.drawable.ic_dialog_info);
         builder.setContentIntent(pendingIntent);
         builder.setAutoCancel(true);
